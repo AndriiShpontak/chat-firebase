@@ -1,26 +1,31 @@
-import React from 'react';
-import {Navigate, Route, Routes} from 'react-router-dom';
+import React, {useContext} from 'react';
+import {Route, Routes} from 'react-router-dom';
 import { privateRoutes, publickRoutes } from '../routes';
 import { CHAT_ROUTE, LOGIN_ROUTE } from '../utils/consts';
+import {useAuthState} from 'react-firebase-hooks/auth';
+
+import { Context } from '../index';
 
 const AppRouter = () => {
-    const user = false;
+    const {auth} = useContext(Context);
+    const [user] = useAuthState(auth);
+    
     return user ?
         (
             <Routes>
                 {privateRoutes.map(({path, Component}) =>
-                    <Route path={path} element={<Component/>}/>
+                    <Route key={path} path={path} element={<Component/>}/>
                 )}
-                <Route path='/chat' element={<Navigate  to={CHAT_ROUTE}/>}/>
+                <Route  to={CHAT_ROUTE}/>
             </Routes>
         )
         :
         (
             <Routes>
                 {publickRoutes.map(({path, Component}) =>
-                    <Route path={path} element={<Component/>}/>
+                    <Route key={path} path={path} element={<Component/>}/>
                 )}
-                <Route path='/login' element={<Navigate  to={LOGIN_ROUTE}/>}/>
+                <Route  to={LOGIN_ROUTE}/>
             </Routes>
         )
 };
