@@ -6,10 +6,10 @@ import Typography from '@mui/material/Typography';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import Button from '@mui/material/Button';
 import { NavLink } from 'react-router-dom';
-import { LOGIN_ROUTE } from '../utils/consts';
 import {useAuthState} from 'react-firebase-hooks/auth';
 
 import { Context } from '../index';
+import { LOGIN_ROUTE } from '../utils/consts';
 
 const Navbar = () => {
     const {auth} = useContext(Context);
