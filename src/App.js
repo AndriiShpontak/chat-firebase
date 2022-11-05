@@ -20,9 +20,9 @@ function App() {
   return (
       <BrowserRouter>
         <Navbar/>
-        <div>
+        {/* <div>
           <Link to="/">Home</Link> <Link to="/login">Go to login</Link> <Link to="/chat">Go to chat</Link>
-        </div>
+        </div> */}
         <AppRouter/>
       </BrowserRouter>
   );

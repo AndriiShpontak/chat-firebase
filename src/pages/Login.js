@@ -9,7 +9,7 @@ import {Context} from '../index';
 
 const Login = () => {
     const {auth} = useContext(Context);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const login = async () => {
         try {
